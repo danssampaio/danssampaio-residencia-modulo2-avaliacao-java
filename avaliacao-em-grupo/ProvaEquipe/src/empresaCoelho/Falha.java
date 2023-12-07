@@ -98,48 +98,49 @@ public class Falha {
 
 	public static void incluirFalha(ArrayList<Falha> falhas, ArrayList<Imovel> imoveis) {
 	       
-			Scanner scanner = new Scanner(System.in);
+		Scanner scanner = new Scanner(System.in);
 
-	        System.out.println("Digite o número de matrícula: ");
-	        int matricula = scanner.nextInt();
+		System.out.println("Deseja fornecer a matrícula do imóvel? (S para Sim, N para Não): ");
+		String opcaoMatricula = scanner.nextLine();
 
-	        Imovel imovel = imoveis.stream().filter(m -> m.getMatricula() == matricula).findFirst().orElse(null);
+		Imovel imovel = null;
 
-	        if (imovel == null) {
-	            System.out.println("Imóvel não encontrado. Falha não registrada.");
-	            return;
-	        }
+		if ("S".equalsIgnoreCase(opcaoMatricula)) {
+			System.out.println("Digite o número de matrícula: ");
+		    int matricula = scanner.nextInt();
 
-	        scanner.nextLine();
+		    imovel = imoveis.stream().filter(m -> m.getMatricula() == matricula).findFirst().orElse(null);
 
-	        System.out.println("Digite a descrição da falha: ");
-	        String descricao = scanner.nextLine();
+		    if (imovel == null) {
+		         System.out.println("Imóvel não encontrado. Falha não registrada.");
+		         return;
+		    }
+		        scanner.nextLine();
+		    }
 
-	        System.out.println("Digite a previsão para resolução (DD/MM/AAAA): ");
-	        String previsao = scanner.nextLine();
+		    System.out.println("Digite a descrição da falha: ");
+		    String descricao = scanner.nextLine();
 
-	        LocalDate dataInicio = LocalDate.now(); 
+		    System.out.println("Digite a previsão para resolução (DD/MM/AAAA): ");
+		    String previsao = scanner.nextLine();
 
-	        System.out.println("Selecione o tipo de falha:");
-	        System.out.println("1. Falha de Geração");
-	        System.out.println("2. Falha de Distribuição");
-	        System.out.print("Escolha o tipo: ");
+		    LocalDate dataInicio = LocalDate.now(); 
 
-	        int tipoFalha = scanner.nextInt();
-	        if (tipoFalha ==1) {
-	        	
-	        	FalhaGeracao novaFalha = new FalhaGeracao(imovel, descricao, previsao, dataInicio);
-	        	falhas.add(novaFalha);
-	        	
-	        } else if (tipoFalha ==2) {
-	        	
-	        	FalhaDistribuicao novaFalha = new FalhaDistribuicao(imovel, descricao, previsao, dataInicio);
-	        	falhas.add(novaFalha);
-	        }
+		    System.out.println("Selecione o tipo de falha:");
+		    System.out.println("1. Falha de Geração");
+		    System.out.println("2. Falha de Distribuição");
+		    System.out.print("Escolha o tipo: ");
 
-	        System.out.println("Falha registrada com sucesso!");
-	    }
-
+		    int tipoFalha = scanner.nextInt();
+		    if (tipoFalha == 1) {
+		        FalhaGeracao novaFalha = new FalhaGeracao(imovel, descricao, previsao, dataInicio);
+		        falhas.add(novaFalha);
+		    } else if (tipoFalha == 2) {
+		        FalhaDistribuicao novaFalha = new FalhaDistribuicao(imovel, descricao, previsao, dataInicio);
+		        falhas.add(novaFalha);
+		    }
+		    System.out.println("Falha registrada com sucesso!");
+		}
 	
 	public boolean isResolvido() {
 		return resolvido;
