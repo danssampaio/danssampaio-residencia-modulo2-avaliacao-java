@@ -16,6 +16,10 @@ public class Cliente {
     public String getNome() {
         return nome;
     }
+    
+    public void setNome(String nome) {
+    	this.nome = nome;
+    }
 
 	
 	public String getCpf() {
@@ -36,10 +40,10 @@ public class Cliente {
 	}
 	
 	public void listarImoveis() {
-		for (Imovel imovel : imoveis) {
-			System.out.println(imovel.toString());
-		}
-	}
+        for (Imovel imovel : imoveis) {
+            System.out.println("Matrícula: " + imovel.getMatricula() + ", Endereço: " + imovel.getEndereco());
+        }
+    }
 
 	public void alterarCliente(String novoNome, String novoCpf) {
 		this.nome = novoNome;

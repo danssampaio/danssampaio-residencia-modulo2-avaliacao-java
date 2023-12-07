@@ -1,15 +1,15 @@
 package empresaCoelho;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Calendar;
 
 public class Pagamento {
 	private LocalDate data;
+	int id;
 	private double valor;
 
-	public Pagamento(double valor, float valorPagamento, Calendar calendar) {
+	public Pagamento(int id, double valor) {
         this.data = LocalDate.now();
+        this.id = id;
         this.valor = valor;
     }
 
@@ -38,7 +38,6 @@ public class Pagamento {
     public String getIdFatura() {
         return null;
     }
-	
-	
+
 
 }

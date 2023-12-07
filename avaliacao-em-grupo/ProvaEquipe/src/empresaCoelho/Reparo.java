@@ -2,6 +2,7 @@ package empresaCoelho;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class Reparo {
@@ -23,6 +24,7 @@ public class Reparo {
 		this.dataInicio = dataInicio;
 		this.resolvido = false;
 	}
+
 
 	public int getNumero() {
 		return numero;
@@ -73,9 +75,6 @@ public class Reparo {
 		 reparo.setResolvido(resolvido);
 	     if (resolvido) {
 	    	 reparo.setDataFim(LocalDate.now());
-	     } else {
-	    	 Reparo novoReparo = new Reparo(falha, descricaoNovoReparo, "Previsão do novo reparo", LocalDate.now());
-	            falha.adicionarReparo(novoReparo);
 	     }
 	}
 

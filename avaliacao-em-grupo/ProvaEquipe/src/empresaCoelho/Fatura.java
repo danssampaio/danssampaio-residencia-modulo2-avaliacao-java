@@ -9,16 +9,7 @@ public class Fatura {
 	private LocalDate dataEmissao;
 	private int ultimaLeitura;
 	private int penultimaLeitura;
-	
-	
-
-	public void setPenultimaLeitura(int penultimaLeitura) {
-		this.penultimaLeitura = penultimaLeitura;
-	}
-
 	private double valor;
-	
-
 	private boolean quitado;
 	private ArrayList<Pagamento> pagamentos;
 	
@@ -32,9 +23,9 @@ public class Fatura {
 		this.pagamentos = new ArrayList<>();
 	}
 	
-	public Fatura(Imovel imovel, double leituraAnterior, double leituraAtual, Calendar dataHoraAtual,
-            double valorFatura) {
-    }
+	public void setPenultimaLeitura(int penultimaLeitura) {
+		this.penultimaLeitura = penultimaLeitura;
+	}
 
     public int getNumeroFatura() {
 		return numeroFatura;
@@ -78,9 +69,10 @@ public class Fatura {
 
 
 	
-	public void incluirPagamento(double valorPagamento) {
+	public void incluirPagamento(double valorPagamento, int id) {
+		
         if (!quitado) {
-			Pagamento pagamento = new Pagamento(valorPagamento);
+			Pagamento pagamento = new Pagamento(id, valorPagamento);
             pagamentos.add(pagamento);
 
             double totalPagamentos = calcularTotalPagamentos();
@@ -98,7 +90,7 @@ public class Fatura {
 		System.out.println("Pagamentos da fatura " + numeroFatura + ":");
 		
         for (Pagamento pagamento : pagamentos) {
-			System.out.println("Data: " + pagamento.getDataPagamento() + ", Valor: R$" + pagamento.getValor());
+			System.out.println("Data: " + pagamento.getData() + ", Valor: R$" + pagamento.getValor());
         }
 	}
 	
@@ -120,7 +112,7 @@ public class Fatura {
 
     public LocalDate getDataQuitacao() {
         if (quitado && !pagamentos.isEmpty()) {
-            return pagamentos.get(pagamentos.size() - 1).getDataPagamento();
+            return pagamentos.get(pagamentos.size() - 1).getData();
         } else {
             return null;
         }
