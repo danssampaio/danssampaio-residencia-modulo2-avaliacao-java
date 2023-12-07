@@ -8,7 +8,16 @@ public class Fatura {
 	private LocalDate dataEmissao;
 	private int ultimaLeitura;
 	private int penultimaLeitura;
+	
+	
+
+	public void setPenultimaLeitura(int penultimaLeitura) {
+		this.penultimaLeitura = penultimaLeitura;
+	}
+
 	private double valor;
+	
+
 	private boolean quitado;
 	private ArrayList<Pagamento> pagamentos;
 	
@@ -38,6 +47,21 @@ public class Fatura {
 		return penultimaLeitura;
 	}
 
+	public double getValor() {
+		return valor;
+	}
+
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
+	public ArrayList<Pagamento> getPagamentos() {
+		return pagamentos;
+	}
+
+	public void setPagamentos(Pagamento pagamento) {
+		this.pagamentos.add(pagamento);
+	}
+	
 	private double calcularValor() {
 		return (ultimaLeitura - penultimaLeitura) * 10.0;
 	}
