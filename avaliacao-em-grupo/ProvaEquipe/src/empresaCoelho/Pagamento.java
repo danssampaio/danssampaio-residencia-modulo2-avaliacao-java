@@ -20,4 +20,20 @@ public class Pagamento {
 		return valor;
 	}
 	
+	public void Pagar(Fatura fatura) {
+		double valorTotal = 0;
+		for (Pagamento pagamento : fatura.getPagamentos()) {
+			valorTotal += pagamento.getValor();
+		}
+		fatura.setPagamentos(this);
+		valorTotal += this.getValor();
+		
+		if (valorTotal > fatura.getValor()) {
+			Reembolso reembolso = new Reembolso(valorTotal - fatura.getValor());
+			reembolso.valorAReembolsar();
+		}
+	}
+	
+	
+
 }
