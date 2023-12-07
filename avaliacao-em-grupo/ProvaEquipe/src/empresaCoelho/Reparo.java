@@ -1,5 +1,8 @@
 package empresaCoelho;
+
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Reparo {
 	private static int contadorReparos = 0;
@@ -34,6 +37,46 @@ public class Reparo {
 		if (resolvido) {
 			this.dataFim = LocalDate.now();
 		}
+	}
+	
+	public LocalDate getDataInicio() {
+        return dataInicio;
+    }
+	
+	public LocalDate getDataFim() {
+        return dataFim;
+    }
+	
+	public void setDataFim(LocalDate dataFim) {
+        this.dataFim = dataFim;
+    }
+	
+	public String getDescricao() {
+	        return descricao;
+	}
+	 
+	public String getPrevisao() {
+	        return previsao;
+	}
+	 
+	public static List<Reparo> reparosEmAberto(List<Reparo> reparos) {
+		 List<Reparo> reparosEmAberto = new ArrayList<>();
+		 for (Reparo reparo : reparos) {
+			 if (!reparo.isResolvido()) {
+				 reparosEmAberto.add(reparo);
+             }
+		 }
+		 return reparosEmAberto;
+    }
+	 
+	public static void encerrarReparo(Reparo reparo, boolean resolvido, String descricaoNovoReparo, Falha falha) {
+		 reparo.setResolvido(resolvido);
+	     if (resolvido) {
+	    	 reparo.setDataFim(LocalDate.now());
+	     } else {
+	    	 Reparo novoReparo = new Reparo(falha, descricaoNovoReparo, "Previsão do novo reparo", LocalDate.now());
+	            falha.adicionarReparo(novoReparo);
+	     }
 	}
 
 	public Falha getFalha() {
