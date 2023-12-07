@@ -2,12 +2,13 @@ package empresaCoelho;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Pagamento {
 	private LocalDate data;
 	private double valor;
 
-	public Pagamento(double valor) {
+	public Pagamento(double valor, float valorPagamento, Calendar calendar) {
         this.data = LocalDate.now();
         this.valor = valor;
     }
@@ -33,6 +34,10 @@ public class Pagamento {
 			reembolso.valorAReembolsar();
 		}
 	}
+
+    public String getIdFatura() {
+        return null;
+    }
 	
 	
 

@@ -2,6 +2,7 @@ package empresaCoelho;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Fatura {
 	private int numeroFatura;
@@ -31,7 +32,11 @@ public class Fatura {
 		this.pagamentos = new ArrayList<>();
 	}
 	
-	public int getNumeroFatura() {
+	public Fatura(Imovel imovel, double leituraAnterior, double leituraAtual, Calendar dataHoraAtual,
+            double valorFatura) {
+    }
+
+    public int getNumeroFatura() {
 		return numeroFatura;
 	}
 	
@@ -119,5 +124,28 @@ public class Fatura {
         } else {
             return null;
         }
+    }
+
+    public String getDivida() {
+        return null;
+    }
+
+    public String getValorCalculado() {
+        return null;
+    }
+
+    public Calendar getData() {
+        return null;
+    }
+
+    public int getIdFatura() {
+        return 0;
+    }
+
+    public String getValorPago() {
+        return null;
+    }
+
+    public void adicionarPagamento(Pagamento pagamento) {
     }
 }
