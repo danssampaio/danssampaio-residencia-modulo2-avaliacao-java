@@ -112,4 +112,15 @@ public class Imovel extends Cliente {
             System.out.println("Número de fatura inválido.");
         }
 	}
+
+    public void setLeituraAnterior(double leituraAtual) {
+    }
+
+    public double getLeituraAtual() {
+        return 0;
+    }
+
+    public double getLeituraAnterior() {
+        return 0;
+    }
 }
